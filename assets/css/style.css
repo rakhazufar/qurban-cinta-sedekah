@@ -1,0 +1,460 @@
+:root {
+  --primary-green: #3D9140;
+  --primary-gradient: linear-gradient(135deg, #3D9140 0%, #2e6d30 100%);
+  --secondary-gold: #F5B800;
+  --secondary-gradient: linear-gradient(135deg, #F5B800 0%, #d4a000 100%);
+  --bg-hero: #3D9140;
+  --text-dark: #333;
+  --text-light: #fff;
+}
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  color: var(--text-dark);
+  background-color: #fff;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 15%;
+  right: -5%;
+  width: 300px;
+  height: 300px;
+  background-color: var(--primary-green);
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  background-color: var(--secondary-gold);
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+.nav-link {
+  color: #333;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.nav-link.active {
+  color: var(--primary-green) !important;
+}
+
+.hero-section {
+  background: var(--primary-gradient);
+  color: var(--text-light);
+  padding: 80px 0 120px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #fff;
+  clip-path: ellipse(60% 100% at 50% 100%);
+}
+
+.hero-logo-large {
+  max-width: 300px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.section-title span {
+  color: var(--primary-green);
+  display: block;
+}
+
+.text-primary-green {
+  color: var(--primary-green);
+}
+
+.animal-card {
+  position: relative;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  padding: 30px 20px;
+  transition: all 0.3s ease;
+  background: #fff;
+  height: 100%;
+}
+
+.animal-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.animal-img-wrapper {
+  position: relative;
+  width: 280px;
+  height: 250px;
+  margin: 0 auto 25px;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.animal-img-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background: var(--primary-gradient);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0.15;
+}
+
+.animal-img-wrapper::after {
+  display: none;
+}
+
+.animal-img {
+  width: 110%;
+  height: auto;
+  max-width: 320px;
+  position: relative;
+  z-index: 2;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.1));
+}
+
+.card-number {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-size: 3rem;
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.05);
+  line-height: 1;
+}
+
+.btn-checkout {
+  background: var(--secondary-gradient);
+  color: var(--text-dark);
+  border-radius: 25px;
+  padding: 10px 35px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: none;
+  box-shadow: 0 4px 15px rgba(245, 184, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.btn-checkout:hover {
+  background: var(--secondary-gradient);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 184, 0, 0.4);
+  color: var(--text-dark);
+}
+
+.features-section {
+  padding: 80px 0;
+}
+
+.feature-block {
+  margin-bottom: 30px;
+}
+
+.feature-icon {
+  background-color: var(--primary-green);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.testimonial-card {
+  background: var(--primary-gradient);
+  color: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  min-height: 250px;
+}
+
+.footer-logo {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+}
+
+.footer {
+  background-color: linear-gradient(135deg, #3D9140 0%, #2e6d30 100%);
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+  }
+
+  .hero-section {
+    padding: 60px 0 100px;
+  }
+
+  .animal-img-wrapper {
+    width: 240px;
+    height: 220px;
+  }
+
+  #testimoni .carousel-inner {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .testimonial-card {
+    min-height: 250px;
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    display: flex !important;
+    width: 35px;
+    height: 35px;
+  }
+
+  .carousel-control-prev {
+    left: -5px;
+  }
+
+  .carousel-control-next {
+    right: -5px;
+  }
+}
+
+/* Wrapper Utama */
+.card-carousel {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  /* Gunakan min-height agar proporsional di desktop */
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+  /* overflow: hidden ditaruh di card untuk potong gambar */
+}
+
+/* Hilangkan margin bawaan row agar full */
+.card-carousel .row {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+/* Card Item */
+.card-carousel .carousel-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  /* KUNCI: Biar gambar otomatis kepotong ngikutin border-radius 20px */
+}
+
+.card-carousel .carousel-card.active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+/* Area Teks (Kiri di desktop, Atas di mobile) */
+.carousel-card .col-lg-4 {
+  padding: 3rem 40px;
+  /* Kasih jarak aman biar teks nggak nempel pinggir */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.carousel-card .card-body {
+  padding: 0;
+  margin-bottom: 50px;
+  /* Kasih ruang di bawah untuk panah navigasi */
+}
+
+.card-title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* Area Gambar (Kanan di desktop, Bawah di mobile) */
+.carousel-card .col-lg-8 {
+  padding: 0;
+  /* Hilangkan padding Bootstrap biar gambar mentok */
+  height: 100%;
+}
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Pastikan gambar memenuhi seluruh area */
+  object-position: center;
+  display: block;
+}
+
+/* Navigasi Panah - Berjejer di bawah */
+.card-carousel__nav {
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+  /* Sejajarkan dengan padding teks di desktop */
+  width: auto !important;
+  /* Override class col-lg-4 di HTML kamu */
+  padding: 0 !important;
+  display: flex;
+  flex-direction: row;
+  /* Bikin panah jejer ke samping, bukan numpuk */
+  gap: 15px;
+  /* Jarak antar panah */
+  z-index: 10;
+}
+
+.card-carousel__nav .carousel__arrow {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-green, #2ca650);
+  /* Sesuaikan variabel warna kamu */
+  border-radius: 8px;
+  /* Kasih sedikit lengkungan di panah */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 0;
+}
+
+.card-carousel__nav .carousel__arrow:hover {
+  background-color: var(--secondary-gold, #d9a05b);
+}
+
+.carousel__icon {
+  fill: white;
+}
+
+/* Responsive Mobile [PERBAIKAN] */
+@media (max-width: 991px) {
+
+  /* 1. Wrapper Utama Mobile: Biarkan tinggi ditentukan konten */
+  .card-carousel {
+    min-height: auto;
+    /* Hilangkan min-height desktop */
+    height: 50vh;
+  }
+
+  /* 2. Kartu Mobile: Tata letak kolom, atur penumpukan dan visibilitas */
+  .carousel-card {
+    position: relative;
+    /* Menumpuk secara alami di mobile */
+    flex-direction: column;
+    /* Teks di atas, Gambar di bawah */
+    border-radius: 20px;
+    /* Pertahankan lengkungan di seluruh kartu */
+    overflow: hidden;
+    /* Pastikan gambar memotong lengkungan bawah */
+    display: none;
+    /* Sembunyikan semua kartu secara default di mobile */
+  }
+
+  /* Tampilkan hanya kartu aktif di mobile */
+  .carousel-card.active {
+    display: flex;
+    /* Buka flex untuk tata letak kolom */
+    z-index: 1;
+    /* Pastikan kartu aktif di atas yang lain */
+  }
+
+  /* Area Teks Mobile (Atas) */
+  .carousel-card .col-lg-4 {
+    order: 1;
+    /* Pindahkan teks ke atas (sesuai tata letak kolom flex) */
+    padding: 2rem 20px;
+    /* Kurangi padding untuk mobile, beri jarak sisi */
+    justify-content: flex-start;
+    /* Teks rata atas/tengah */
+  }
+
+  .carousel-card .card-body {
+    margin-bottom: 20px;
+    /* Kurangi jarak bawah */
+  }
+
+  /* Area Gambar Mobile (Bawah) */
+  .carousel-card .col-lg-8 {
+    order: 2;
+    /* Pindahkan gambar ke bawah */
+    height: 250px;
+    /* Atur tinggi tetap untuk gambar di mobile */
+  }
+
+  /* Navigasi Panah - Berjejer di bawah */
+  .card-carousel__nav {
+    bottom: 30px;
+    left: 60vw;
+  }
+}
