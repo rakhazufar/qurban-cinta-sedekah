@@ -39,8 +39,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown">Tentang Kami</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">LMI</a></li>
-                            <li><a class="dropdown-item" href="#">Visi Misi</a></li>
+                            <li><a class="dropdown-item" href="https://cintasedekah.org/sebaran-manfaat-cinta-sedekah/">Sebaran Manfaat</a></li>
+                            <li><a class="dropdown-item" href="https://cintasedekah.org/tentang-kami/">Visi Misi</a></li>
+                            <li><a class="dropdown-item" href="https://cintasedekah.org/kabar-kami">Kabar Kami</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -85,7 +86,7 @@
                         <h5 class="fw-bold">DOMBA STANDAR</h5>
                         <p class="text-muted small">Bobot: ±20–23 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 2.200.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="DOMBA STANDAR" data-bobot="±20–23 kg" data-harga="Rp. 2.200.000,-" data-image="assets/images/1.png">Checkout</a>
                     </div>
                 </div>
                 <!-- Item 2 -->
@@ -98,7 +99,7 @@
                         <h5 class="fw-bold">DOMBA PREMIUM</h5>
                         <p class="text-muted small">Bobot: ±24–27 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 2.600.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="DOMBA PREMIUM" data-bobot="±24–27 kg" data-harga="Rp. 2.600.000,-" data-image="assets/images/2.png">Checkout</a>
                     </div>
                 </div>
                 <!-- Item 3 -->
@@ -111,7 +112,7 @@
                         <h5 class="fw-bold">KAMBING STANDAR</h5>
                         <p class="text-muted small">Bobot: ±20–23 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 2.500.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="KAMBING STANDAR" data-bobot="±20–23 kg" data-harga="Rp. 2.500.000,-" data-image="assets/images/3.png">Checkout</a>
                     </div>
                 </div>
                 <!-- Item 4 -->
@@ -124,7 +125,7 @@
                         <h5 class="fw-bold">KAMBING PREMIUM</h5>
                         <p class="text-muted small">Bobot: ±24–27 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 2.900.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="KAMBING PREMIUM" data-bobot="±24–27 kg" data-harga="Rp. 2.900.000,-" data-image="assets/images/4.png">Checkout</a>
                     </div>
                 </div>
                 <!-- Item 5 -->
@@ -137,7 +138,7 @@
                         <h5 class="fw-bold">SAPI UTUH</h5>
                         <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 21.000.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="SAPI UTUH" data-bobot="±250 kg – 260 kg" data-harga="Rp. 21.000.000,-" data-image="assets/images/5.png">Checkout</a>
                     </div>
                 </div>
                 <!-- Item 6 -->
@@ -150,7 +151,7 @@
                         <h5 class="fw-bold">SAPI 1/7</h5>
                         <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
                         <h4 class="fw-bold text-primary-green">Rp. 3.000.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3">Checkout</a>
+                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal" data-paket="SAPI 1/7" data-bobot="±250 kg – 260 kg" data-harga="Rp. 3.000.000,-" data-image="assets/images/6.png">Checkout</a>
                     </div>
                 </div>
             </div>
@@ -617,6 +618,60 @@
     <a href="https://wa.me/628125000170" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Checkout Modal -->
+    <div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow-lg" style="border-radius: 20px; overflow: hidden;">
+                <div class="modal-body p-0">
+                    <div class="row g-0">
+                        <!-- Left Column: Product Info -->
+                        <div class="col-md-5 bg-light p-4 d-flex flex-column align-items-center justify-content-center text-center">
+                            <img src="" id="modalAnimalImg" alt="Hewan Qurban" class="img-fluid mb-3" style="max-height: 200px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
+                            <h4 class="fw-bold mb-1" id="modalPaketTitle"></h4>
+                            <p class="text-muted small mb-2" id="modalBobot"></p>
+                            <h4 class="fw-bold text-primary-green" id="modalHarga"></h4>
+                        </div>
+                        <!-- Right Column: Form -->
+                        <div class="col-md-7 p-4 p-lg-5">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="fw-bold mb-0">Form Pemesanan</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <form id="checkoutForm">
+                                <input type="hidden" id="inputPaket" name="paket">
+                                <div class="mb-3">
+                                    <label for="inputNama" class="form-label small fw-bold">Nama Lengkap</label>
+                                    <input type="text" class="form-control form-control-lg fs-6" id="inputNama" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputWA" class="form-label small fw-bold">Nomor WhatsApp</label>
+                                    <input type="tel" class="form-control form-control-lg fs-6" id="inputWA" placeholder="08..." required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="inputAlamat" class="form-label small fw-bold">Alamat</label>
+                                    <textarea class="form-control fs-6" id="inputAlamat" rows="3" required></textarea>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="form-label small fw-bold">Jumlah Pemesan</label>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <button type="button" class="btn btn-qty" id="btnMinus" style="width: 45px; height: 45px; border-radius: 10px; background-color: var(--primary-green); color: white; border: none;"><i class="fas fa-minus"></i></button>
+                                        <span id="displayJumlah" class="fw-bold fs-4" style="min-width: 40px; text-align: center;">1</span>
+                                        <input type="hidden" id="inputJumlah" value="1">
+                                        <button type="button" class="btn btn-qty" id="btnPlus" style="width: 45px; height: 45px; border-radius: 10px; background-color: var(--primary-green); color: white; border: none;"><i class="fas fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button type="submit" class="btn btn-checkout text-dark py-3">Konfirmasi via WhatsApp</button>
+                                    <button type="button" class="btn btn-link text-muted small text-decoration-none" data-bs-dismiss="modal">Batal</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom JS -->
     <script src="assets/js/script.js"></script>
