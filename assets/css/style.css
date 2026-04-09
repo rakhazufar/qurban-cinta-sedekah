@@ -287,7 +287,7 @@ body::after {
 .card-carousel {
   position: relative;
   width: 100%;
-  min-height: 480px;
+  min-height: 600px;
   /* Gunakan min-height agar proporsional di desktop */
   background: white;
   border-radius: 20px;
