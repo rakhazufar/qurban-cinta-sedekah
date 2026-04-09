@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinta Sedekah - Waktu Indonesia Berkurban (WIB)</title>
     <!-- Meta Tags -->
@@ -25,18 +29,43 @@
 
     <!-- Preload -->
     <link rel="preload" href="assets/images/poster_page.webp" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        as="style">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="assets/images/icon.webp">
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    </noscript>
     <!-- Google Fonts: Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+    </noscript>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
+    <script>
+        /*! loadCSS rel=preload polyfill. */
+        (function (w) {
+            "use strict"; if (!w.loadCSS) { w.loadCSS = function () { } }
+            var rp = loadCSS.relpreload = {}; rp.support = (function () { var ret; try { ret = w.document.createElement("link").relList.supports("preload") } catch (e) { ret = !1 } return function () { return ret } })();
+            rp.bindMediaToggle = function (link) {
+                var finalMedia = link.media || "all"; function enableStylesheet() { link.media = finalMedia }
+                if (link.addEventListener) { link.addEventListener("load", enableStylesheet) } else if (link.attachEvent) { link.attachEvent("onload", enableStylesheet) }
+                setTimeout(function () { link.rel = "stylesheet"; link.media = "only x" }); setTimeout(enableStylesheet, 3000)
+            };
+            rp.poly = function () { if (rp.support()) { return } var links = w.document.getElementsByTagName("link"); for (var i = 0; i < links.length; i++) { var link = links[i]; if (link.rel === "preload" && link.getAttribute("as") === "style" && !link.getAttribute("data-loadcss")) { link.setAttribute("data-loadcss", !0); rp.bindMediaToggle(link) } } };
+            if (!rp.support()) { rp.poly(); var run = w.setInterval(rp.poly, 500); if (w.addEventListener) { w.addEventListener("load", function () { rp.poly(); w.clearInterval(run) }) } else if (w.attachEvent) { w.attachEvent("onload", function () { rp.poly(); w.clearInterval(run) }) } }
+            if (typeof exports !== "undefined") { exports.loadCSS = loadCSS } else { w.loadCSS = loadCSS }
+        }(typeof global !== "undefined" ? global : this));
+    </script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
@@ -75,516 +104,537 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-section" id="beranda">
-        <div class="container">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-lg-8">
-                    <h1 class="visually-hidden">Qurban Cinta Sedekah</h1>
-                    <img src="assets/images/poster_page.webp" alt="Poster Waktu Indonesia Berkurban - Cinta Sedekah"
-                        class="img-fluid hero-logo-large rounded shadow" loading="eager">
-                </div>
-            </div>
-        </div>
-    </section>
+    <main id="main-content">
 
-    <!-- Catalog Section -->
-    <section id="katalog" class="py-5 bg-white position-relative">
-        <div class="container">
-            <h2 class="section-title">Katalog <span>Hewan Qurban</span></h2>
-            <div class="row g-4">
-                <!-- Item 1 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">01</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/1.webp" alt="Paket Domba Standar Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">DOMBA STANDAR</h5>
-                        <p class="text-muted small">Bobot: ±20–23 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 2.200.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="DOMBA STANDAR" data-bobot="±20–23 kg" data-harga="Rp. 2.200.000,-"
-                            data-image="assets/images/1.webp">Checkout</a>
-                    </div>
-                </div>
-                <!-- Item 2 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">02</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/2.webp" alt="Paket Domba Premium Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">DOMBA PREMIUM</h5>
-                        <p class="text-muted small">Bobot: ±24–27 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 2.600.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="DOMBA PREMIUM" data-bobot="±24–27 kg" data-harga="Rp. 2.600.000,-"
-                            data-image="assets/images/2.webp">Checkout</a>
-                    </div>
-                </div>
-                <!-- Item 3 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">03</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/3.webp" alt="Paket Kambing Standar Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">KAMBING STANDAR</h5>
-                        <p class="text-muted small">Bobot: ±20–23 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 2.500.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="KAMBING STANDAR" data-bobot="±20–23 kg" data-harga="Rp. 2.500.000,-"
-                            data-image="assets/images/3.webp">Checkout</a>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">04</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/4.webp" alt="Paket Kambing Premium Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">KAMBING PREMIUM</h5>
-                        <p class="text-muted small">Bobot: ±24–27 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 2.900.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="KAMBING PREMIUM" data-bobot="±24–27 kg" data-harga="Rp. 2.900.000,-"
-                            data-image="assets/images/4.webp">Checkout</a>
-                    </div>
-                </div>
-                <!-- Item 5 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">05</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/5.webp" alt="Paket Sapi Utuh Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">SAPI UTUH</h5>
-                        <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 21.000.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="SAPI UTUH" data-bobot="±250 kg – 260 kg" data-harga="Rp. 21.000.000,-"
-                            data-image="assets/images/5.webp">Checkout</a>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="col-md-6 col-lg-4">
-                    <div class="animal-card">
-                        <span class="card-number">06</span>
-                        <div class="animal-img-wrapper">
-                            <img src="assets/images/6.webp" alt="Paket Sapi 1/7 Cinta Sedekah" class="animal-img"
-                                loading="lazy" width="280" height="250">
-                        </div>
-                        <h5 class="fw-bold">SAPI 1/7</h5>
-                        <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
-                        <h4 class="fw-bold text-primary-green">Rp. 3.000.000,-</h4>
-                        <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal" data-bs-target="#checkoutModal"
-                            data-paket="SAPI 1/7" data-bobot="±250 kg – 260 kg" data-harga="Rp. 3.000.000,-"
-                            data-image="assets/images/6.webp">Checkout</a>
+        <!-- Hero Section -->
+        <section class="hero-section" id="beranda">
+            <div class="container">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-8">
+                        <h1 class="visually-hidden">Qurban Cinta Sedekah</h1>
+                        <img src="assets/images/poster_page.webp" alt="Poster Waktu Indonesia Berkurban - Cinta Sedekah"
+                            class="img-fluid hero-logo-large rounded shadow" loading="eager" fetchpriority="high">
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Gallery Section (Card Carousel) -->
-    <section id="gallery" class="py-5">
-        <div class="container">
-            <h2 class="section-title mb-5">Dokumentasi <span>Cinta Sedekah</span></h2>
-
-            <div class="row">
-                <div class="col card-carousel">
-                    <!-- Navigation -->
-                    <div class="card-carousel__nav col-12 col-lg-4">
-                        <span id="moveLeft" class="carousel__arrow">
-                            <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z"></path>
-                            </svg>
-                        </span>
-                        <span id="moveRight" class="carousel__arrow">
-                            <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
-                                <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
-                                </path>
-                            </svg>
-                        </span>
-                    </div>
-
-                    <!-- Card 1 -->
-                    <div class="carousel-card active">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN QURBAN
-                                        1445 / 2024</h6>
-                                    <h3 class="card-title fw-bold">49 Orang Shahibul Qurban</h3>
-                                    <p class="card-text">Dana Terkumpul: Rp147.900.000,-</p>
-                                </div>
+        <!-- Catalog Section -->
+        <section id="katalog" class="py-5 bg-white position-relative">
+            <div class="container">
+                <h2 class="section-title">Katalog <span>Hewan Qurban</span></h2>
+                <div class="row g-4">
+                    <!-- Item 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">01</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/1.webp" alt="Paket Domba Standar Cinta Sedekah"
+                                    class="animal-img" loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/1.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Sebaran Qurban">
-                            </div>
+                            <h3 class="fw-bold h5">DOMBA STANDAR</h3>
+                            <p class="text-muted small">Bobot: ±20–23 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 2.200.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="DOMBA STANDAR" data-bobot="±20–23 kg"
+                                data-harga="Rp. 2.200.000,-" data-image="assets/images/1.webp">Checkout</a>
                         </div>
                     </div>
-
-                    <!-- Card 2 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">HEWAN QURBAN</h6>
-                                    <h3 class="card-title fw-bold">46 Hewan Qurban</h3>
-                                    <p class="card-text">23 ekor kambing, 21 ekor domba, dan 2 ekor sapi</p>
-                                </div>
+                    <!-- Item 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">02</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/2.webp" alt="Paket Domba Premium Cinta Sedekah"
+                                    class="animal-img" loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/2.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Hewan Qurban">
-                            </div>
+                            <h3 class="fw-bold h5">DOMBA PREMIUM</h3>
+                            <p class="text-muted small">Bobot: ±24–27 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 2.600.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="DOMBA PREMIUM" data-bobot="±24–27 kg"
+                                data-harga="Rp. 2.600.000,-" data-image="assets/images/2.webp">Checkout</a>
                         </div>
                     </div>
-
-                    <!-- Card 3 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">LOKASI SEBARAN
-                                    </h6>
-                                    <h3 class="card-title fw-bold">49 Titik Lokasi Sebaran</h3>
-                                    <p class="card-text">Tersebar di 12 wilayah di Yogyakarta</p>
-                                </div>
+                    <!-- Item 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">03</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/3.webp" alt="Paket Kambing Standar Cinta Sedekah"
+                                    class="animal-img" loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/3.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Lokasi Sebaran">
-                            </div>
+                            <h3 class="fw-bold h5">KAMBING STANDAR</h3>
+                            <p class="text-muted small">Bobot: ±20–23 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 2.500.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="KAMBING STANDAR" data-bobot="±20–23 kg"
+                                data-harga="Rp. 2.500.000,-" data-image="assets/images/3.webp">Checkout</a>
                         </div>
                     </div>
-
-                    <!-- Card 4 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">PENERIMA MANFAAT
-                                    </h6>
-                                    <h3 class="card-title fw-bold">3.983 Orang</h3>
-                                    <p class="card-text">Penerima Manfaat dari program Qurban 1445 / 2024</p>
-                                </div>
+                    <!-- Item 4 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">04</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/4.webp" alt="Paket Kambing Premium Cinta Sedekah"
+                                    class="animal-img" loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/4.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Penerima Manfaat">
-                            </div>
+                            <h3 class="fw-bold h5">KAMBING PREMIUM</h3>
+                            <p class="text-muted small">Bobot: ±24–27 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 2.900.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="KAMBING PREMIUM" data-bobot="±24–27 kg"
+                                data-harga="Rp. 2.900.000,-" data-image="assets/images/4.webp">Checkout</a>
                         </div>
                     </div>
-
-                    <!-- Card 5 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Banjarnegara & Bantul</h3>
-                                    <p class="card-text">Banjarnegara: 1 Domba · Bantul: 1 Kambing, 1 Domba</p>
-                                </div>
+                    <!-- Item 5 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">05</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/5.webp" alt="Paket Sapi Utuh Cinta Sedekah" class="animal-img"
+                                    loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/5.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Banjarnegara & Bantul">
-                            </div>
+                            <h3 class="fw-bold h5">SAPI UTUH</h3>
+                            <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 21.000.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="SAPI UTUH" data-bobot="±250 kg – 260 kg"
+                                data-harga="Rp. 21.000.000,-" data-image="assets/images/5.webp">Checkout</a>
                         </div>
                     </div>
-
-                    <!-- Card 6 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Boyolali & Grobogan</h3>
-                                    <p class="card-text">Boyolali: 2 Kambing, 1 Domba · Grobogan: 1 Kambing, 1 Domba</p>
-                                </div>
+                    <!-- Item 6 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="animal-card">
+                            <span class="card-number">06</span>
+                            <div class="animal-img-wrapper">
+                                <img src="assets/images/6.webp" alt="Paket Sapi 1/7 Cinta Sedekah" class="animal-img"
+                                    loading="lazy">
                             </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/6.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Boyolali & Grobogan">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 7 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Gunungkidul</h3>
-                                    <p class="card-text">7 Kambing, dan 7 Domba</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/7.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Gunungkidul">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 8 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Klaten</h3>
-                                    <p class="card-text">6 Kambing, dan 4 Domba</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/8.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Klaten">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 9 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Kulonprogo & Lebak</h3>
-                                    <p class="card-text">Kulonprogo: 1 Kambing, 1 Domba · Lebak: 1 Sapi</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/9.webp" class="img-fluid rounded-end" loading="lazy"
-                                    alt="Kulonprogo & Lebak">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 10 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Magelang</h3>
-                                    <p class="card-text">2 Kambing, dan 3 Domba</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/10.webp" class="img-fluid rounded-end"
-                                    loading="lazy" alt="Magelang">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 11 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Purbalingga & Sleman</h3>
-                                    <p class="card-text">Purbalingga: 1 Kambing, 1 Domba · Sleman: 1 Domba</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/11.webp" class="img-fluid rounded-end"
-                                    loading="lazy" alt="Purbalingga & Sleman">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Card 12 -->
-                    <div class="carousel-card">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-4 d-flex">
-                                <div class="card-body">
-                                    <h6 class="card-subtitle text-uppercase small fw-bold text-muted">SEBARAN WILAYAH
-                                    </h6>
-                                    <h3 class="card-title fw-bold">Wonogiri</h3>
-                                    <p class="card-text">2 Kambing</p>
-                                </div>
-                            </div>
-                            <div class="col-lg-8">
-                                <img src="assets/images/dokumentasi/12.webp" class="img-fluid rounded-end"
-                                    loading="lazy" alt="Wonogiri">
-                            </div>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features-section bg-light">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 text-center mb-5 mb-lg-0">
-                    <img src="./assets/images/Mockup_Qurban.webp" alt="App Mockup" class="img-fluid">
-                </div>
-                <div class="col-lg-7 px-lg-5">
-                    <div class="feature-block d-flex">
-                        <div class="feature-icon flex-shrink-0 me-4">
-                            <i class="fas fa-hand-holding-heart"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">Kemudahan Berqurban</h5>
-                            <p class="text-muted">Kini anda dapat berqurban dari mana saja hanya dengan dua tahap
-                                transaksi mudah. Anda pilih hewan qurbannya dan kami akan selesaikan sisanya.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block d-flex">
-                        <div class="feature-icon flex-shrink-0 me-4">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">Berita Acara Penyembelihan</h5>
-                            <p class="text-muted">Transparansi adalah kunci kepercayaan. Qurbanholic dilengkapi dengan
-                                notifikasi informasi tahap pelaksanaan yang dikirim langsung kepada pequrban.</p>
-                        </div>
-                    </div>
-                    <div class="feature-block d-flex">
-                        <div class="feature-icon flex-shrink-0 me-4">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold">Distribusi Hingga ke Pelosok Negeri</h5>
-                            <p class="text-muted">LMI berkomitmen for terus meluaskan kebermanfaatan dan kebahagiaan
-                                hingga ke pelosok negeri.</p>
+                            <h3 class="fw-bold h5">SAPI 1/7</h3>
+                            <p class="text-muted small">Bobot: ±250 kg – 260 kg</p>
+                            <h4 class="fw-bold text-primary-green">Rp. 3.000.000,-</h4>
+                            <a href="#" class="btn btn-checkout mt-3" data-bs-toggle="modal"
+                                data-bs-target="#checkoutModal" data-paket="SAPI 1/7" data-bobot="±250 kg – 260 kg"
+                                data-harga="Rp. 3.000.000,-" data-image="assets/images/6.webp">Checkout</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Testimonials Section -->
-    <section id="testimoni" class="py-5">
-        <div class="container text-center">
-            <h2 class="section-title">Qurbanmu Sumber <span>Kebahagiaan Mereka</span></h2>
-            <p class="text-muted mb-5">Aksi sederhana kita adalah karunia dan kebahagiaan tak terhingga bagi
-                saudara-saudara di luar sana.</p>
+        <!-- Gallery Section (Card Carousel) -->
+        <section id="gallery" class="py-5">
+            <div class="container">
+                <h2 class="section-title mb-5">Dokumentasi <span>Cinta Sedekah</span></h2>
 
-            <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <!-- Slide 1 -->
-                    <div class="carousel-item active">
-                        <div class="row justify-content-center px-md-5">
-                            <div class="col-md-6 mb-4">
-                                <div class="testimonial-card">
-                                    <div class="mb-2 text-warning">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                    <p class="fst-italic mb-3">"Alhamdulillah, di wadah ulun hanyar wayahini ada
-                                        penyembelihan hewan kurban. Terimakasih Cinta Sedekah."</p>
-                                    <div class="d-flex align-items-center mt-auto">
-                                        <img src="https://placehold.co/100x100/white/3d9140?text=User"
-                                            class="rounded-circle me-3" style="width: 50px; height: 50px;"
-                                            loading="lazy" width="50" height="50"
-                                            alt="Testimoni Pengguna Cinta Sedekah">
-                                        <p class="fw-bold mb-0 small">Ds. Muara Halayung</p>
+                <div class="row">
+                    <div class="col card-carousel">
+                        <!-- Navigation -->
+                        <div class="card-carousel__nav col-12 col-lg-4">
+                            <span id="moveLeft" class="carousel__arrow" role="button" tabindex="0"
+                                aria-label="Sebelumnya">
+                                <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <span id="moveRight" class="carousel__arrow" role="button" tabindex="0"
+                                aria-label="Berikutnya">
+                                <svg class="carousel__icon" width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z">
+                                    </path>
+                                </svg>
+                            </span>
+                        </div>
+
+                        <!-- Card 1 -->
+                        <div class="carousel-card active">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            QURBAN
+                                            1445 / 2024</p>
+                                        <h3 class="card-title fw-bold">49 Orang Shahibul Qurban</h3>
+                                        <p class="card-text">Dana Terkumpul: Rp147.900.000,-</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6 mb-4 d-none d-md-block">
-                                <div class="testimonial-card">
-                                    <div class="mb-2 text-warning">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                    <p class="fst-italic mb-3">"Terima kasih atas perhatian para mudhohi untuk pondok
-                                        kecil kami. Sangat bermanfaat."</p>
-                                    <div class="d-flex align-items-center mt-auto">
-                                        <img src="https://placehold.co/100x100/white/3d9140?text=User"
-                                            class="rounded-circle me-3" style="width: 50px; height: 50px;"
-                                            loading="lazy" width="50" height="50"
-                                            alt="Testimoni Pengguna Cinta Sedekah">
-                                        <p class="fw-bold mb-0 small">Ds. Hidayat, Malut</p>
-                                    </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/10.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Sebaran Qurban">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- Slide 2 -->
-                    <div class="carousel-item">
-                        <div class="row justify-content-center px-md-5">
-                            <div class="col-md-6 mb-4">
-                                <div class="testimonial-card">
-                                    <div class="mb-2 text-warning">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
+
+                        <!-- Card 2 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">HEWAN
+                                            QURBAN</p>
+                                        <h3 class="card-title fw-bold">46 Hewan Qurban</h3>
+                                        <p class="card-text">23 ekor kambing, 21 ekor domba, dan 2 ekor sapi</p>
                                     </div>
-                                    <p class="fst-italic mb-3">"Program WIB sangat memudahkan kami di perantauan untuk
-                                        tetap bisa berkurban."</p>
-                                    <div class="d-flex align-items-center mt-auto">
-                                        <img src="https://placehold.co/100x100/white/3d9140?text=User"
-                                            class="rounded-circle me-3" style="width: 50px; height: 50px;"
-                                            loading="lazy" width="50" height="50"
-                                            alt="Testimoni Pengguna Cinta Sedekah">
-                                        <p class="fw-bold mb-0 small">Ahmad, Jakarta</p>
-                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/2.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Hewan Qurban">
                                 </div>
                             </div>
-                            <div class="col-md-6 mb-4 d-none d-md-block">
-                                <div class="testimonial-card">
-                                    <div class="mb-2 text-warning">
-                                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                            class="fas fa-star"></i>
-                                    </div>
-                                    <p class="fst-italic mb-3">"Rendang qurbannya sudah sampai di pelosok NTT. Sangat
-                                        membantu gizi anak-anak."</p>
-                                    <div class="d-flex align-items-center mt-auto">
-                                        <img src="https://placehold.co/100x100/white/3d9140?text=User"
-                                            class="rounded-circle me-3" style="width: 50px; height: 50px;"
-                                            loading="lazy" width="50" height="50"
-                                            alt="Testimoni Pengguna Cinta Sedekah">
-                                        <p class="fw-bold mb-0 small">Ds. Oebelo, NTT</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">LOKASI
+                                            SEBARAN
+                                        </p>
+                                        <h3 class="card-title fw-bold">49 Titik Lokasi Sebaran</h3>
+                                        <p class="card-text">Tersebar di 12 wilayah di Yogyakarta</p>
                                     </div>
                                 </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/3.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Lokasi Sebaran">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">PENERIMA
+                                            MANFAAT
+                                        </p>
+                                        <h3 class="card-title fw-bold">3.983 Orang</h3>
+                                        <p class="card-text">Penerima Manfaat dari program Qurban 1445 / 2024</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/4.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Penerima Manfaat">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Banjarnegara & Bantul</h3>
+                                        <p class="card-text">Banjarnegara: 1 Domba · Bantul: 1 Kambing, 1 Domba</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/5.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Banjarnegara & Bantul">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Boyolali & Grobogan</h3>
+                                        <p class="card-text">Boyolali: 2 Kambing, 1 Domba · Grobogan: 1 Kambing, 1 Domba
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/6.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Boyolali & Grobogan">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Gunungkidul</h3>
+                                        <p class="card-text">7 Kambing, dan 7 Domba</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/7.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Gunungkidul">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 8 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Klaten</h3>
+                                        <p class="card-text">6 Kambing, dan 4 Domba</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/8.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Klaten">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Kulonprogo & Lebak</h3>
+                                        <p class="card-text">Kulonprogo: 1 Kambing, 1 Domba · Lebak: 1 Sapi</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/9.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Kulonprogo & Lebak">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 10 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Magelang</h3>
+                                        <p class="card-text">2 Kambing, dan 3 Domba</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/12.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Magelang">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 11 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Purbalingga & Sleman</h3>
+                                        <p class="card-text">Purbalingga: 1 Kambing, 1 Domba · Sleman: 1 Domba</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/11.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Purbalingga & Sleman">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 12 -->
+                        <div class="carousel-card">
+                            <div class="row g-0 h-100">
+                                <div class="col-lg-4 d-flex">
+                                    <div class="card-body">
+                                        <p class="card-subtitle text-uppercase small fw-bold text-muted mb-1">SEBARAN
+                                            WILAYAH
+                                        </p>
+                                        <h3 class="card-title fw-bold">Wonogiri</h3>
+                                        <p class="card-text">2 Kambing</p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-8">
+                                    <img src="assets/images/dokumentasi/1.webp" class="img-fluid rounded-end"
+                                        loading="lazy" alt="Wonogiri">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-5 text-center mb-5 mb-lg-0">
+                        <img src="./assets/images/Mockup_Qurban.webp" alt="Mockup Aplikasi Qurban Cinta Sedekah"
+                            class="img-fluid" loading="lazy" width="600" height="800">
+                    </div>
+                    <div class="col-lg-7 px-lg-5">
+                        <div class="feature-block d-flex">
+                            <div class="feature-icon flex-shrink-0 me-4">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold h5">Kemudahan Berqurban</h3>
+                                <p class="text-muted">Kini anda dapat berqurban dari mana saja hanya dengan dua tahap
+                                    transaksi mudah. Anda pilih hewan qurbannya dan kami akan selesaikan sisanya.</p>
+                            </div>
+                        </div>
+                        <div class="feature-block d-flex">
+                            <div class="feature-icon flex-shrink-0 me-4">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold h5">Berita Acara Penyembelihan</h3>
+                                <p class="text-muted">Transparansi adalah kunci kepercayaan. Qurbanholic dilengkapi
+                                    dengan
+                                    notifikasi informasi tahap pelaksanaan yang dikirim langsung kepada pequrban.</p>
+                            </div>
+                        </div>
+                        <div class="feature-block d-flex">
+                            <div class="feature-icon flex-shrink-0 me-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold h5">Distribusi Hingga ke Pelosok Negeri</h3>
+                                <p class="text-muted">LMI berkomitmen for terus meluaskan kebermanfaatan dan kebahagiaan
+                                    hingga ke pelosok negeri.</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
             </div>
-        </div>
-    </section>
+        </section>
 
+        <!-- Testimonials Section -->
+        <section id="testimoni" class="py-5">
+            <div class="container text-center">
+                <h2 class="section-title">Qurbanmu Sumber <span>Kebahagiaan Mereka</span></h2>
+                <p class="text-muted mb-5">Aksi sederhana kita adalah karunia dan kebahagiaan tak terhingga bagi
+                    saudara-saudara di luar sana.</p>
+
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Slide 1 -->
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center px-md-5">
+                                <div class="col-md-6 mb-4">
+                                    <div class="testimonial-card">
+                                        <div class="mb-2 text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i>
+                                        </div>
+                                        <p class="fst-italic mb-3">"Alhamdulillah, di wadah ulun hanyar wayahini ada
+                                            penyembelihan hewan kurban. Terimakasih Cinta Sedekah."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <div class="rounded-circle me-3 d-flex align-items-center justify-content-center fw-bold"
+                                                style="width: 50px; height: 50px; min-width: 50px; background-color: white; color: #3D9140; font-size: 1.2rem;">
+                                                M</div>
+                                            <p class="fw-bold mb-0 small">Ds. Muara Halayung</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 d-none d-md-block">
+                                    <div class="testimonial-card">
+                                        <div class="mb-2 text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i>
+                                        </div>
+                                        <p class="fst-italic mb-3">"Terima kasih atas perhatian para mudhohi untuk
+                                            pondok
+                                            kecil kami. Sangat bermanfaat."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <div class="rounded-circle me-3 d-flex align-items-center justify-content-center fw-bold"
+                                                style="width: 50px; height: 50px; min-width: 50px; background-color: white; color: #3D9140; font-size: 1.2rem;">
+                                                H</div>
+                                            <p class="fw-bold mb-0 small">Ds. Hidayat, Malut</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="carousel-item">
+                            <div class="row justify-content-center px-md-5">
+                                <div class="col-md-6 mb-4">
+                                    <div class="testimonial-card">
+                                        <div class="mb-2 text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i>
+                                        </div>
+                                        <p class="fst-italic mb-3">"Program WIB sangat memudahkan kami di perantauan
+                                            untuk
+                                            tetap bisa berkurban."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <div class="rounded-circle me-3 d-flex align-items-center justify-content-center fw-bold"
+                                                style="width: 50px; height: 50px; min-width: 50px; background-color: white; color: #3D9140; font-size: 1.2rem;">
+                                                A</div>
+                                            <p class="fw-bold mb-0 small">Ahmad, Jakarta</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 d-none d-md-block">
+                                    <div class="testimonial-card">
+                                        <div class="mb-2 text-warning">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                                class="fas fa-star"></i>
+                                        </div>
+                                        <p class="fst-italic mb-3">"Rendang qurbannya sudah sampai di pelosok NTT.
+                                            Sangat
+                                            membantu gizi anak-anak."</p>
+                                        <div class="d-flex align-items-center mt-auto">
+                                            <div class="rounded-circle me-3 d-flex align-items-center justify-content-center fw-bold"
+                                                style="width: 50px; height: 50px; min-width: 50px; background-color: white; color: #3D9140; font-size: 1.2rem;">
+                                                O</div>
+                                            <p class="fw-bold mb-0 small">Ds. Oebelo, NTT</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
@@ -600,7 +650,7 @@
                         kalangan, dikelola secara profesional sesuai petunjuk syariat islam.</p>
                 </div>
                 <div class="col-lg-6 mb-4">
-                    <h5 class="fw-bold mb-3">Hubungi Kami</h5>
+                    <h2 class="fw-bold h5 mb-3">Hubungi Kami</h2>
                     <ul class="list-unstyled small contact-list-svg">
                         <li class="mb-2 d-flex align-items-start">
                             <span class="me-2 mt-1" style="width: 20px; display: inline-block;">
@@ -649,14 +699,14 @@
                         </li>
                     </ul>
                     <div class="mt-4">
-                        <a href="https://facebook.com/cspeduli" class="text-white me-3" target="_blank"><i
-                                class="fab fa-facebook-f fa-lg"></i></a>
-                        <a href="https://www.instagram.com/cintasedekahofficial" class="text-white me-3"
-                            target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
-                        <a href="https://youtube.com/c/cspedulitv" class="text-white me-3" target="_blank"><i
-                                class="fab fa-youtube fa-lg"></i></a>
-                        <a href="https://t.me/CSPeduli" class="text-white me-3" target="_blank"><i
-                                class="fab fa-telegram-plane fa-lg"></i></a>
+                        <a href="https://facebook.com/cspeduli" class="text-white me-3" target="_blank"
+                            aria-label="Facebook Cinta Sedekah"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="https://www.instagram.com/cintasedekahofficial" class="text-white me-3" target="_blank"
+                            aria-label="Instagram Cinta Sedekah"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="https://youtube.com/c/cspedulitv" class="text-white me-3" target="_blank"
+                            aria-label="YouTube Cinta Sedekah"><i class="fab fa-youtube fa-lg"></i></a>
+                        <a href="https://t.me/CSPeduli" class="text-white me-3" target="_blank"
+                            aria-label="Telegram Cinta Sedekah"><i class="fab fa-telegram-plane fa-lg"></i></a>
                     </div>
                 </div>
             </div>
@@ -669,7 +719,7 @@
 
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/628125000170" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/628125000170" class="whatsapp-float" target="_blank" aria-label="Hubungi kami via WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -684,14 +734,14 @@
                             class="col-md-5 bg-light p-4 d-flex flex-column align-items-center justify-content-center text-center">
                             <img src="" id="modalAnimalImg" alt="Hewan Qurban" class="img-fluid mb-3"
                                 style="max-height: 200px; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));">
-                            <h4 class="fw-bold mb-1" id="modalPaketTitle"></h4>
+                            <h3 class="fw-bold mb-1 h4" id="modalPaketTitle"></h3>
                             <p class="text-muted small mb-2" id="modalBobot"></p>
-                            <h4 class="fw-bold text-primary-green" id="modalHarga"></h4>
+                            <h3 class="fw-bold text-primary-green h4" id="modalHarga"></h3>
                         </div>
                         <!-- Right Column: Form -->
                         <div class="col-md-7 p-4 p-lg-5">
                             <div class="d-flex justify-content-between align-items-center mb-4">
-                                <h4 class="fw-bold mb-0">Form Pemesanan</h4>
+                                <h2 class="fw-bold mb-0 h4" id="checkoutModalLabel">Form Pemesanan</h2>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -743,7 +793,7 @@
     <script src="assets/js/script.js" defer></script>
 
     <!-- Bootstrap 5 JS Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" async></script>
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">

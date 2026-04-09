@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qurban.cintasedekah.org/sitemap.xml
