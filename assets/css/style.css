@@ -330,6 +330,7 @@ body::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: left;
 }
 
 .carousel-card .card-body {
@@ -462,7 +463,7 @@ body::after {
   /* Navigasi Panah - Berjejer di bawah */
   .card-carousel__nav {
     bottom: 30px;
-    left: 60vw;
+    left: 20px;
   }
 }
 
