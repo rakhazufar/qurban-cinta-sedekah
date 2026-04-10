@@ -43,30 +43,28 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Navbar Scroll Highlight Functionality
+    // Navbar Scroll Highlight using IntersectionObserver (Performance optimized)
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    window.addEventListener('scroll', () => {
-        let currentSection = '';
+    const observerOptions = {
+        root: null,
+        rootMargin: '-10% 0px -80% 0px',
+        threshold: 0
+    };
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            // Angka 100 ini buat jarak toleransi dari navbar (biar pas nyentuh atas langsung ganti)
-            if (scrollY >= (sectionTop - 100)) {
-                currentSection = section.getAttribute('id');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navLinks.forEach(link => {
+                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+                });
             }
         });
+    }, observerOptions);
 
-        navLinks.forEach(link => {
-            // Hapus warna hijau dari semua menu dulu
-            link.classList.remove('active');
-            // Kasih warna hijau ke menu yang href-nya sama dengan section yang lagi dilihat
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    });
+    sections.forEach(section => observer.observe(section));
 
     // Checkout Modal Logic
     const checkoutModal = document.getElementById('checkoutModal');
