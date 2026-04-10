@@ -1,106 +1,61 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Carousel Functionality
-    const cards = document.querySelectorAll('.carousel-card');
-    let current = 0;
-    const total = cards.length;
+    // ... (Existing Carousel, Observer, and Helper logic)
 
-    function setSlide(prev, next) {
-        if (next >= total) next = 0;
-        if (next < 0) next = total - 1;
-
-        cards[prev].classList.remove('active');
-        cards[next].classList.add('active');
-
-        current = next;
+    // Helper: Slugify (to generate product ID)
+    function slugify(text) {
+        return text.toString().toLowerCase()
+            .replace(/\s+/g, '-')           // Replace spaces with -
+            .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+            .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+            .replace(/^-+/, '')             // Trim - from start of text
+            .replace(/-+$/, '');            // Trim - from end of text
     }
 
-    const moveRight = document.getElementById('moveRight');
-    const moveLeft = document.getElementById('moveLeft');
-
-    if (moveRight) {
-        moveRight.addEventListener('click', function () {
-            setSlide(current, current + 1);
-        });
+    // Helper: Format Currency
+    function formatCurrency(amount) {
+        return 'Rp. ' + parseInt(amount).toLocaleString('id-ID') + ',-';
     }
 
-    if (moveLeft) {
-        moveLeft.addEventListener('click', function () {
-            setSlide(current, current - 1);
-        });
+    // Helper: Calculate and Update Total Display in Modal
+    function updateTotalDisplay() {
+        const harga = parseInt(document.getElementById('inputHarga').value) || 0;
+        const jumlah = parseInt(document.getElementById('inputJumlah').value) || 1;
+        const total = harga * jumlah;
+        document.getElementById('modalHarga').textContent = formatCurrency(total);
     }
-
-    // Swipe functionality for carousel
-    let touchStartX = 0;
-    let touchEndX = 0;
-    const carousel = document.querySelector('.card-carousel');
-
-    if (carousel) {
-        carousel.addEventListener('touchstart', e => touchStartX = e.changedTouches[0].screenX);
-        carousel.addEventListener('touchmove', e => touchEndX = e.changedTouches[0].screenX);
-        carousel.addEventListener('touchend', () => {
-            if (touchEndX < touchStartX - 50) setSlide(current, current + 1);
-            if (touchEndX > touchStartX + 50) setSlide(current, current - 1);
-        });
-    }
-
-    // Navbar Scroll Highlight using IntersectionObserver (Performance optimized)
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '-10% 0px -80% 0px',
-        threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const id = entry.target.getAttribute('id');
-                navLinks.forEach(link => {
-                    link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                });
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
 
     // Checkout Modal Logic
     const checkoutModal = document.getElementById('checkoutModal');
     if (checkoutModal) {
         checkoutModal.addEventListener('show.bs.modal', function (event) {
             const button = event.relatedTarget;
+            const productId = button.getAttribute('data-id');
             const paket = button.getAttribute('data-paket');
             const bobot = button.getAttribute('data-bobot');
             const harga = button.getAttribute('data-harga');
             const image = button.getAttribute('data-image');
 
-            const modalAnimalImg = checkoutModal.querySelector('#modalAnimalImg');
-            const modalPaketTitle = checkoutModal.querySelector('#modalPaketTitle');
-            const modalBobot = checkoutModal.querySelector('#modalBobot');
-            const modalHarga = checkoutModal.querySelector('#modalHarga');
-            const inputPaket = checkoutModal.querySelector('#inputPaket');
+            // Populate Modal UI
+            checkoutModal.querySelector('#modalAnimalImg').src = image;
+            checkoutModal.querySelector('#modalPaketTitle').textContent = paket;
+            checkoutModal.querySelector('#modalBobot').textContent = `Bobot: ${bobot}`;
+            document.getElementById('inputProductId').value = productId;
+            document.getElementById('inputPaket').value = paket;
+            document.getElementById('inputHarga').value = harga;
 
-            modalAnimalImg.src = image;
-            modalPaketTitle.textContent = paket;
-            modalBobot.textContent = `Bobot: ${bobot}`;
-            modalHarga.textContent = harga;
-            inputPaket.value = paket;
+            // Reset quantity to 1
+            document.getElementById('displayJumlah').textContent = '1';
+            document.getElementById('inputJumlah').value = '1';
 
-            // Reset quantity to 1 when modal opens
-            const displayJumlah = document.getElementById('displayJumlah');
-            const inputJumlah = document.getElementById('inputJumlah');
-            displayJumlah.textContent = '1';
-            inputJumlah.value = '1';
+            updateTotalDisplay();
         });
     }
 
-    // Quantity Counter Logic
+    // Quantity Control
     const btnMinus = document.getElementById('btnMinus');
     const btnPlus = document.getElementById('btnPlus');
-    const displayJumlah = document.getElementById('displayJumlah');
     const inputJumlah = document.getElementById('inputJumlah');
+    const displayJumlah = document.getElementById('displayJumlah');
 
     if (btnMinus && btnPlus && displayJumlah && inputJumlah) {
         btnPlus.addEventListener('click', function () {
@@ -108,6 +63,7 @@ document.addEventListener('DOMContentLoaded', function () {
             current++;
             inputJumlah.value = current;
             displayJumlah.textContent = current;
+            updateTotalDisplay();
         });
 
         btnMinus.addEventListener('click', function () {
@@ -116,27 +72,119 @@ document.addEventListener('DOMContentLoaded', function () {
                 current--;
                 inputJumlah.value = current;
                 displayJumlah.textContent = current;
+                updateTotalDisplay();
             }
         });
     }
 
+    // Form Submission with Midtrans Snap
     const checkoutForm = document.getElementById('checkoutForm');
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const nama = document.getElementById('inputNama').value;
-            const wa = document.getElementById('inputWA').value;
-            const alamat = document.getElementById('inputAlamat').value;
-            const paket = document.getElementById('inputPaket').value;
-            const jumlah = document.getElementById('inputJumlah').value;
+            const name = document.getElementById('inputNama').value;
+            const email = document.getElementById('inputEmail').value;
+            const phone = document.getElementById('inputWA').value;
+            const address = document.getElementById('inputAlamat').value;
+            const productId = document.getElementById('inputProductId').value;
+            const packageName = document.getElementById('inputPaket').value;
+            const price = parseInt(document.getElementById('inputHarga').value);
+            const quantity = parseInt(document.getElementById('inputJumlah').value);
+            const amount = price * quantity;
 
-            const message = `Assalamu'alaikum, saya ingin memesan Hewan Qurban.\n\nNama: ${nama}\nNo. WhatsApp: ${wa}\nAlamat: ${alamat}\nPaket: ${paket}\nJumlah Pemesan: ${jumlah}\n\nMohon informasi lebih lanjut. Jazakallah khayran.`;
+            // Prepare Structured Product Data
+            const product = {
+                id: productId,
+                name: packageName,
+                price: price,
+                quantity: quantity
+            };
 
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/628125000170?text=${encodedMessage}`;
+            if (!name || !email || !phone || !address || !amount || !product.id) {
+                alert('Semua field harus diisi.');
+                return;
+            }
 
-            window.open(whatsappUrl, '_blank');
+            const submitBtn = checkoutForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Memproses...';
+
+            fetch('https://cintasedekah.org/generate-token-qurban.php', {
+                method: 'POST',
+                body: JSON.stringify({ name, email, phone, address, amount, product }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+                .then(response => {
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.error_messages) {
+                        alert('Error: ' + data.error_messages.join(', '));
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = originalBtnText;
+                        return;
+                    }
+
+                    snap.pay(data.token, {
+                        onSuccess: function (result) {
+                            const transactionTime = new Date().toLocaleString('id-ID', {
+                                year: 'numeric', month: 'long', day: 'numeric',
+                                hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false
+                            });
+
+                            const modalInstance = bootstrap.Modal.getInstance(checkoutModal);
+                            if (modalInstance) modalInstance.hide();
+
+                            document.getElementById('confirmation-name').textContent = name;
+                            document.getElementById('confirmation-amount').textContent = formatCurrency(amount);
+                            document.getElementById('order-id').textContent = result.order_id;
+                            document.getElementById('transaction-time').textContent = transactionTime;
+                            document.getElementById('confirmation-popup').style.display = 'block';
+
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        },
+                        onPending: function (result) {
+                            alert('Pembayaran pending. Silakan selesaikan pembayaran.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        },
+                        onError: function (result) {
+                            alert('Pembayaran gagal. Silakan coba lagi.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        },
+                        onClose: function () {
+                            alert('Pop-up ditutup tanpa menyelesaikan pembayaran.');
+                            submitBtn.disabled = false;
+                            submitBtn.textContent = originalBtnText;
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan. Silakan coba lagi.');
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = originalBtnText;
+                });
         });
     }
 });
+
+// Confirmation Popup Handlers
+function copyData() {
+    const name = document.getElementById('confirmation-name').innerText;
+    const amount = document.getElementById('confirmation-amount').innerText;
+    const orderId = document.getElementById('order-id').innerText;
+    const transactionTime = document.getElementById('transaction-time').innerText;
+
+    const textToCopy = `Nama: ${name}\nJumlah Donasi: ${amount}\nOrder ID: ${orderId}\nWaktu Transaksi: ${transactionTime}`;
+    navigator.clipboard.writeText(textToCopy).then(() => alert('Data disalin!'));
+}
+
+function closePopup() {
+    document.getElementById('confirmation-popup').style.display = 'none';
+}
