@@ -3,7 +3,7 @@
   --primary-gradient: linear-gradient(135deg, #3D9140 0%, #2e6d30 100%);
   --secondary-gold: #F5B800;
   --secondary-gradient: linear-gradient(135deg, #F5B800 0%, #d4a000 100%);
-  --bg-hero: #3D9140;
+  --bg-hero: #f9f9f9;
   --text-dark: #333;
   --text-light: #fff;
 }
@@ -19,14 +19,14 @@ body {
 }
 
 html {
-  scroll-padding-top: 90px;
+  scroll-padding-top: 70px;
 }
 
 body {
   color: var(--text-dark);
   background-color: #fff;
   position: relative;
-  padding-top: 88px;
+  padding-top: 70px;
 }
 
 body::before {
@@ -74,29 +74,27 @@ body::after {
 }
 
 .hero-section {
-  background: var(--primary-gradient);
-  color: var(--text-light);
-  padding: 50px 0 80px;
+  background: #f9f9f9;
+  color: var(--text-dark);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
+  padding: 40px 0;
 }
 
 .hero-section::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100px;
-  background-color: #fff;
-  clip-path: ellipse(60% 100% at 50% 100%);
+  display: none;
 }
 
 .hero-logo-large {
-  max-width: 550px;
-
-  margin-bottom: -20px;
+  max-width: 650px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
 }
 
 .section-title {
@@ -251,12 +249,13 @@ body::after {
   }
 
   .hero-section {
-    padding: 40px 0 70px;
+    min-height: 80vh;
+    padding: 60px 0;
   }
 
   .hero-logo-large {
-    max-width: 350px;
-    margin-bottom: -30px;
+    max-width: 100%;
+    margin-bottom: 0;
   }
 
   .hero-section h1.display-3 {
@@ -267,9 +266,41 @@ body::after {
     font-size: 1.1rem;
   }
 
+  .animal-card {
+    padding: 15px 10px;
+  }
+
+  .animal-card h3 {
+    font-size: 0.9rem;
+  }
+
+  .animal-card h4 {
+    font-size: 0.95rem;
+  }
+
+  .animal-card .small {
+    font-size: 0.75rem;
+  }
+
+  .btn-checkout {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+  }
+
   .animal-img-wrapper {
-    width: 240px;
-    height: 220px;
+    width: 100%;
+    height: 140px;
+    margin-bottom: 15px;
+  }
+
+  .animal-img-wrapper::before {
+    width: 100px;
+    height: 100px;
+  }
+
+  .animal-img {
+    max-width: 110%;
+    height: auto;
   }
 
   #testimoni .carousel-inner {
